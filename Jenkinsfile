@@ -28,6 +28,7 @@ pipeline {
                             aws eks update-kubeconfig --region $REGION --name "$PROJECT-${params.deploy_to}"
                             kubectl get nodes
                             kubectl apply -f 01-namespace.yaml
+                            kubectl delete configmap catalogue -n roboshop
                             sed -i "s/1.0.0/${params.appVersion}/g" values-${params.deploy_to}.yaml
                             helm upgrade --install $COMPONENT -f values-${params.deploy_to}.yaml -n $PROJECT .
                         """
