@@ -36,5 +36,5 @@ spec:
             cpu: "100m"
             memory: "256Mi"
         envFrom:
-        - ConfigMapRef:
+        - configMapRef:
             name: user
