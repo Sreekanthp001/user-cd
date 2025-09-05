@@ -1,0 +1,8 @@
+# deployment:
+#   imageURL: #change with your imageulr from aws ecr 
+#   imageVersion: IMAGE_VERSION
+# hpa: 
+#   maxReplicas: 10
+#   Utilisation: 75
+# ConfigMap: 
+#   MONGO_URL: mongodb://mongodb:27017/catalogue

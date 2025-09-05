@@ -1,0 +1,6 @@
+# deployment: 
+#   imageURL: #change with your user image in ecr 
+#   imageVersion: IMAGE_VERSION
+# hpa:
+#   maxReplicas: 10
+#   Utilisation:75 
