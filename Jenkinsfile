@@ -23,8 +23,8 @@ pipeline {
             steps{
                 script{
                     withAWS(credentials: 'aws-creds', region: 'us-east-1') {
-                        def deplomentStatus = sh(returnStdout: true, script: "kubectl rollout status deployment/user --timeout=30s -n $PROJECT || echo FAILED").trim()
-                        if (deplomentStatus.contains("successfully rolled out")) {
+                        def deploymentStatus = sh(returnStdout: true, script: "kubectl rollout status deployment/user --timeout=30s -n $PROJECT || echo FAILED").trim()
+                        if (deploymentStatus.contains("successfully rolled out")) {
                             echo "Deployment is success"
                         } else {
                             sh """
@@ -33,12 +33,13 @@ pipeline {
                             """
                             def rollbackStatus = sh(returnStdout: true, script: "kubectl rollout status deployment/user --timeout=30s -n $PROJECT || echo FAILED").trim()
                             if (rollbackStatus.contains("successfully rolled out")) {
-                                error "Deployment id Failure, Rollback Success"
+                                error "Deployment is Failure, Rollback Success"
                             }
                             else{
-                                error "Deployment is Failure, Rollback Failure. Application is not rinning"
+                                error "Deployment is Failure, Rollback Failure. Application is not running"
                             }
                         }
+
                     }
                 }
             }
