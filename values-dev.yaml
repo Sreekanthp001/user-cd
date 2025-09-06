@@ -1,7 +1,6 @@
-deployment: 
-  imageURL: 632745187858.dkr.ecr.us-east-1.amazonaws.com/roboshop/user #change with your user image in ecr 
+deployment:
+  imageURL: 315069654700.dkr.ecr.us-east-1.amazonaws.com/roboshop/user
   imageVersion: IMAGE_VERSION
 hpa:
-  minReplicas: 1
   maxReplicas: 10
-  cpuUtilization: 75 
+  utilisation: 75
