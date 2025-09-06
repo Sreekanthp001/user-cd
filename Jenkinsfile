@@ -6,7 +6,7 @@ pipeline {
         appVersion = ''
         REGION = "us-east-1"
         ACC_ID = "632745187858"
-        PROJECT = "roboshop"
+        PROJECT = "roboshop-dev"
         COMPONENT = "user"
     }
     options {
