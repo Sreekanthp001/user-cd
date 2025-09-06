@@ -1,24 +1,24 @@
-# deployment:
-#   imageURL: 632745187858.dkr.ecr.us-east-1.amazonaws.com/roboshop/user:1.0.0
-#   imageVersion: 1.0.0
-# hpa:
-#   maxReplicas: 10
-#   utilisation: 75
-# configMap:
-#   MONGO_URL: mongodb://mongodb:27017/catalogue
-
-componentName: user
-
 deployment:
-  imageURL: 632745187858.dkr.ecr.us-east-1.amazonaws.com/roboshop/user
+  imageURL: 632745187858.dkr.ecr.us-east-1.amazonaws.com/roboshop/user:1.0.0
   imageVersion: 1.0.0
-
 hpa:
   maxReplicas: 10
   utilisation: 75
-
 configMap:
-  MONGO_URL: mongodb://mongodb:27017/users
-  REDIS_URL: redis://redis:6379
+  MONGO_URL: mongodb://mongodb:27017/catalogue
 
-namespace: roboshop
+# componentName: user
+
+# deployment:
+#   imageURL: 632745187858.dkr.ecr.us-east-1.amazonaws.com/roboshop/user
+#   imageVersion: 1.0.0
+
+# hpa:
+#   maxReplicas: 10
+#   utilisation: 75
+
+# configMap:
+#   MONGO_URL: mongodb://mongodb:27017/users
+#   REDIS_URL: redis://redis:6379
+
+# namespace: roboshop
