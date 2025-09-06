@@ -125,7 +125,7 @@ pipeline {
         REGION = "us-east-1"
         ACC_ID = "632745187858"
         PROJECT = "roboshop" 
-        COMPONENT = "catalogue"
+        COMPONENT = "user"
     }
 
     options {
