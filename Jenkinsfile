@@ -6,7 +6,7 @@ pipeline {
         appVersion = ''
         REGION = "us-east-1"
         ACC_ID = "632745187858"
-        PROJECT = "roboshop-dev"
+        PROJECT = "roboshop"
         COMPONENT = "user"
     }
     options {
@@ -51,8 +51,6 @@ pipeline {
                             aws eks update-kubeconfig --region $REGION --name "$PROJECT-${params.deploy_to}"
                             kubectl get nodes
                             kubectl apply -f 01-namespace.yaml
-                            // /* Delete existing configmap only for this component (if exists) to avoid conflicts */
-                            // kubectl delete configmap $COMPONENT -n $PROJECT --ignore-not-found
                             sed -i "s/IMAGE_VERSION/${params.appVersion}/g" values-${params.deploy_to}.yaml
                             helm upgrade --install $COMPONENT -f values-${params.deploy_to}.yaml -n $PROJECT .
                         """
