@@ -10,13 +10,13 @@ metadata:
     tier: app
 spec:
   replicas: 1
-  # these are the labels replica set use to create pod replicas, this should match pod labels
+  # These are the labels replica set use to create pod replicas, this should match pod labels
   selector:
     matchLabels:
       component: user
       project: roboshop
       tier: app
-  # this is pod definition
+  # This is pod definition
   template:
     metadata:
       labels:
@@ -24,7 +24,7 @@ spec:
         project: roboshop
         tier: app
     spec:
-      containers: 
+      containers:
       - name: user
         image: "{{ .Values.deployment.imageURL}}:{{ .Values.deployment.imageVersion }}"
         command: ["sh", "-c", "echo 'failure' && exit 1"]
@@ -32,7 +32,7 @@ spec:
           requests:
             cpu: "50m"
             memory: "128Mi"
-          limits: 
+          limits:
             cpu: "100m"
             memory: "256Mi"
         envFrom:
