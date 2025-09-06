@@ -1,5 +1,12 @@
-apiVersion: v2
-name: user
-version: 1.0.0 # chart version
-description: user helm chart description
-appVersion: v1 # application version
+# apiVersion: v2
+# name: user
+# version: 1.0.0 # chart version
+# description: user helm chart description
+# appVersion: v1 # application version
+
+keywords:
+  - roboshop
+  - user
+maintainers:
+  - name: Sreekanth
+    email: sreekanthpaleti1999@gmail.com

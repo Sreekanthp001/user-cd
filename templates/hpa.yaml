@@ -1,13 +1,33 @@
+# apiVersion: autoscaling/v2
+# kind: HorizontalPodAutoscaler
+# metadata:
+#   name: user
+#   namespace: roboshop
+# spec:
+#   scaleTargetRef:
+#     apiVersion: apps/v1
+#     kind: Deployment
+#     name: user
+#   minReplicas: 1
+#   maxReplicas: {{ .Values.hpa.maxReplicas }}
+#   metrics:
+#   - type: Resource
+#     resource:
+#       name: cpu
+#       target:
+#         type: Utilization
+#         averageUtilization: {{ .Values.hpa.utilisation }}
+
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: user
-  namespace: roboshop
+  name: {{ .Values.componentName }}
+  namespace: {{ .Release.Namespace }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: user
+    name: {{ .Values.componentName }}
   minReplicas: 1
   maxReplicas: {{ .Values.hpa.maxReplicas }}
   metrics:

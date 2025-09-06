@@ -1,7 +1,15 @@
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: roboshop
+#   labels:
+#     project: roboshop
+#     environment: dev
+
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: roboshop
+  name: {{ .Values.namespace }}
   labels:
     project: roboshop
     environment: dev

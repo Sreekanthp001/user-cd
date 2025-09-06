@@ -1,33 +1,70 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: user
+#   namespace: roboshop
+#   # deployment labels
+#   labels:
+#     component: user
+#     project: roboshop
+#     tier: app
+# spec:
+#   replicas: 1
+#   # These are the labels replica set use to create pod replicas, this should match pod labels
+#   selector:
+#     matchLabels:
+#       component: user
+#       project: roboshop
+#       tier: app
+#   # This is pod definition
+#   template:
+#     metadata:
+#       labels:
+#         component: user
+#         project: roboshop
+#         tier: app
+#     spec:
+#       containers:
+#       - name: user
+#         image: "{{ .Values.deployment.imageURL}}:{{ .Values.deployment.imageVersion }}"
+#         command: ["sh", "-c", "echo 'failure' && exit 1"]
+#         resources:
+#           requests:
+#             cpu: "50m"
+#             memory: "128Mi"
+#           limits:
+#             cpu: "100m"
+#             memory: "256Mi"
+#         envFrom:
+#         - configMapRef:
+#             name: user
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user
-  namespace: roboshop
-  # deployment labels
+  name: {{ .Values.componentName }}
+  namespace: {{ .Release.Namespace }}
   labels:
-    component: user
+    component: {{ .Values.componentName }}
     project: roboshop
     tier: app
 spec:
   replicas: 1
-  # These are the labels replica set use to create pod replicas, this should match pod labels
   selector:
     matchLabels:
-      component: user
+      component: {{ .Values.componentName }}
       project: roboshop
       tier: app
-  # This is pod definition
   template:
     metadata:
       labels:
-        component: user
+        component: {{ .Values.componentName }}
         project: roboshop
         tier: app
     spec:
       containers:
-      - name: user
-        image: "{{ .Values.deployment.imageURL}}:{{ .Values.deployment.imageVersion }}"
-        command: ["sh", "-c", "echo 'failure' && exit 1"]
+      - name: {{ .Values.componentName }}
+        image: "{{ .Values.deployment.imageURL }}:{{ .Values.deployment.imageVersion }}"
         resources:
           requests:
             cpu: "50m"
@@ -37,4 +74,4 @@ spec:
             memory: "256Mi"
         envFrom:
         - configMapRef:
-            name: user
+            name: {{ .Values.componentName }}
