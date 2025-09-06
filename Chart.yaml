@@ -4,9 +4,9 @@
 # description: user helm chart description
 # appVersion: v1 # application version
 
-keywords:
-  - roboshop
-  - user
-maintainers:
-  - name: Sreekanth
-    email: sreekanthpaleti1999@gmail.com
+apiVersion: v2
+name: user           # ← required
+description: User Helm chart
+version: 1.0.0       # chart version
+appVersion: 1.0.0    # application version
+
