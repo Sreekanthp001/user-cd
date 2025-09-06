@@ -1,4 +1,5 @@
- pipeline {
+
+pipeline {
     agent  {
         label 'AGENT-1'
     }
@@ -7,7 +8,7 @@
         REGION = "us-east-1"
         ACC_ID = "632745187858"
         PROJECT = "roboshop" 
-        COMPONENT = "catalogue"
+        COMPONENT = "user"
     }
     options {
         timeout(time: 30, unit: 'MINUTES') 
@@ -116,6 +117,7 @@
         }
     }
 } 
+    
 
 // pipeline {
 //     agent { label 'AGENT-1' }
