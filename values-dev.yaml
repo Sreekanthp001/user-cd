@@ -1,6 +1,6 @@
 deployment:
   componentName: user
-  imageURL: 632745187858.dkr.ecr.us-east-1.amazonaws.com/roboshop/user:1.0.0
+  imageURL: 632745187858.dkr.ecr.us-east-1.amazonaws.com/roboshop/user
   imageVersion: 1.0.0
 hpa:
   maxReplicas: 10
